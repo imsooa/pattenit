@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <style>
+        canvas {
+            border: 0.5px solid lightgray;
+          background-color: rgb(10,20,60);
+        }
+  </style>
+  <title>JS Bin</title>
+</head>
+
+<body>
+ my canvas
+  <br>
+<canvas id="myCanvas" width="800" height="600"></canvas>
+    
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 점의 개수 설정
+    const numDots = 100;
+
+    // 점의 최대 반지름 설정
+    const maxRadius = 10;
+
+    // 파스텔톤 색상 배열
+    const pastelColors = [
+      '#F0FFF0', '#E6FFFF', '#FFFACD', '#FFE6FF', '#FFB6C1', '#CD5C5C',
+      '#F0FFF0', '#E6FFFF', '#FFFACD', '#FFE6FF', '#FFB6C1', '#CD5C5C',
+      '#F0FFF0', '#E6FFFF', '#FFFACD', '#FFE6FF', '#FFB6C1', '#CD5C5C',
+      '#F0FFF0', '#E6FFFF', '#FFFACD', '#FFE6FF', '#FFB6C1', '#CD5C5C',
+      '#F0FFF0', '#E6FFFF', '#FFFACD', '#FFE6FF', '#FFB6C1', '#CD5C5C'
+    ];
+
+    // 랜덤 색상 함수 (파스텔톤)
+    function randomColor() {
+      const randomIndex = Math.floor(Math.random() * pastelColors.length);
+      return pastelColors[randomIndex];
+    }
+
+    // 점 그리기
+    for (let i = 0; i < numDots; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * maxRadius;
+      const color = randomColor();
+
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+  
+</script>
+
+</body>
+</html>
